@@ -19,6 +19,7 @@ void help(){
 void fahrenheit(float temp){
   long double result_celsius;
   float result_kelvin;
+
   printf("Temperatura recebida pela função: %.3f f\n", temp);
 
   result_celsius = (temp - 32) * 5/9;
@@ -32,16 +33,28 @@ void fahrenheit(float temp){
   printf("-----------------------------------------------------------------\n");
 }
 
-// void celsius(float temp){
-//   float result;
-//   printf("Temperatura recebida pela função: %.3f\n", temp);
+void kelvin(float temp){
+  long double result_celsius;
+  float result_fahrenheit;
 
-// }
+  printf("Temperatura recebida pela função: %.3f K\n", temp);
 
-// void kelvin(float temp){
-//   float result
+  result_celsius = temp - 273.15;
+  result_fahrenheit = (temp - 273.15) * 9/5 + 32;
 
-// }
+  printf("-----------------------------------------------------------------\n");
+  printf("Temperatura informada   || Temperaturas convertidas\n");
+  printf("------------------------||---------------------------------------\n");
+  printf("%.3f Graus Kelvin \t|| %Lg ºC\n", temp, result_celsius);
+  printf("\t\t\t|| %.3f F\n", result_fahrenheit);
+  printf("-----------------------------------------------------------------\n");
+}
+
+void celsius(float temp){
+  float result;
+  printf("Temperatura recebida pela função: %.3f\n", temp);
+
+}
 
 
 int main(int argc, char *argv[]){
@@ -59,21 +72,17 @@ int main(int argc, char *argv[]){
       printf("Ausência de argumentos no segundo parâmetro\n");
     }
     else if (0 == strcmp(argv[1] ,"-f") || 0 == strcmp(argv[1] ,"--fahrenheit")){
-      printf("Op fahrenheit\n");
       sscanf(argv[2],"%f",&temperature);
       fahrenheit(temperature);
-      printf("Temperatura passada: %.3f f\n", temperature);
 
     }else if (0 == strcmp(argv[1] ,"-k") || 0 == strcmp(argv[1] ,"--kelvin")){
-      printf("Op kelvin\n");
       sscanf(argv[2],"%f",&temperature);
-      printf("Temperatura passada: %.3f f\n", temperature);
+      kelvin(temperature);
     }
 
     else if (0 == strcmp(argv[1] ,"-c") || 0 == strcmp(argv[1] ,"--celsius")){
-      printf("Op celsius\n");
       sscanf(argv[2],"%f",&temperature);
-      printf("Temperatura passada: %.3f f\n", temperature);
+      celsius(temperature);
     }
 
 }
