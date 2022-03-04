@@ -20,11 +20,11 @@ void converter_fahrenheit(float temp){
   long double result_celsius;
   long double result_kelvin;
 
-  printf("Temperatura recebida pela função: %.3f f\n", temp);
-
   result_celsius = (temp - 32) * 5/9;
   result_kelvin = (temp - 32) * 5/9 + 273.15;
-
+  
+  printf("-----------------------------------------------------------------\n");
+	printf("\t\tConversor de Temperatura em C\n");
   printf("-----------------------------------------------------------------\n");
   printf("Temperatura informada   || Temperaturas convertidas\n");
   printf("------------------------||---------------------------------------\n");
@@ -37,11 +37,11 @@ void converter_kelvin(float temp){
   long double result_celsius;
   long double result_fahrenheit;
 
-  printf("Temperatura recebida pela função: %.3f K\n", temp);
-
   result_celsius = temp - 273.15;
   result_fahrenheit = (temp - 273.15) * 9/5 + 32;
 
+  printf("-----------------------------------------------------------------\n");
+	printf("\t\tConversor de Temperatura em C\n");
   printf("-----------------------------------------------------------------\n");
   printf("Temperatura informada   || Temperaturas convertidas\n");
   printf("------------------------||---------------------------------------\n");
@@ -54,11 +54,11 @@ void converter_celsius(float temp){
   long double result_kelvin;
   long double result_fahrenheit;
 
-  printf("Temperatura recebida pela função: %.3f K\n", temp);
-
   result_kelvin = temp + 273.15;
   result_fahrenheit = (temp * 9/5) + 32;
 
+  printf("-----------------------------------------------------------------\n");
+	printf("\t\tConversor de Temperatura em C\n");
   printf("-----------------------------------------------------------------\n");
   printf("Temperatura informada   || Temperaturas convertidas\n");
   printf("------------------------||---------------------------------------\n");

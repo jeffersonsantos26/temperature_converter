@@ -41,7 +41,8 @@ gcc conversor.c -o conversor
 $ ./conversor -f 37
 ```
 ```
-Temperatura recebida pela função: 37.000 f
+-----------------------------------------------------------------
+                Conversor de Temperatura em C
 -----------------------------------------------------------------
 Temperatura informada   || Temperaturas convertidas
 ------------------------||---------------------------------------
