@@ -3,7 +3,7 @@
 
 float temperature;
 
-void help(){
+void display_help(){
 	printf("-----------------------------------------------------------------\n");
 	printf("\t\tConversor de Temperatura em C\n");
 	printf("-----------------------------------------------------------------\n");
@@ -16,9 +16,9 @@ void help(){
 	printf("  -h || --help\t\t\tMostra tela de ajuda\n\n");
 }
 
-void fahrenheit(float temp){
+void converter_fahrenheit(float temp){
   long double result_celsius;
-  float result_kelvin;
+  long double result_kelvin;
 
   printf("Temperatura recebida pela função: %.3f f\n", temp);
 
@@ -29,13 +29,13 @@ void fahrenheit(float temp){
   printf("Temperatura informada   || Temperaturas convertidas\n");
   printf("------------------------||---------------------------------------\n");
   printf("%.3f Graus Fahrenheit || %Lg ºC\n", temp, result_celsius);
-  printf("\t\t\t|| %.3f K\n", result_kelvin);
+  printf("\t\t\t|| %Lg K\n", result_kelvin);
   printf("-----------------------------------------------------------------\n");
 }
 
-void kelvin(float temp){
+void converter_kelvin(float temp){
   long double result_celsius;
-  float result_fahrenheit;
+  long double result_fahrenheit;
 
   printf("Temperatura recebida pela função: %.3f K\n", temp);
 
@@ -46,13 +46,25 @@ void kelvin(float temp){
   printf("Temperatura informada   || Temperaturas convertidas\n");
   printf("------------------------||---------------------------------------\n");
   printf("%.3f Graus Kelvin \t|| %Lg ºC\n", temp, result_celsius);
-  printf("\t\t\t|| %.3f F\n", result_fahrenheit);
+  printf("\t\t\t|| %Lg F\n", result_fahrenheit);
   printf("-----------------------------------------------------------------\n");
 }
 
-void celsius(float temp){
-  float result;
-  printf("Temperatura recebida pela função: %.3f\n", temp);
+void converter_celsius(float temp){
+  long double result_kelvin;
+  long double result_fahrenheit;
+
+  printf("Temperatura recebida pela função: %.3f K\n", temp);
+
+  result_kelvin = temp + 273.15;
+  result_fahrenheit = (temp * 9/5) + 32;
+
+  printf("-----------------------------------------------------------------\n");
+  printf("Temperatura informada   || Temperaturas convertidas\n");
+  printf("------------------------||---------------------------------------\n");
+  printf("%.3f Graus Celsius \t|| %Lg K\n", temp, result_kelvin);
+  printf("\t\t\t|| %Lg F\n", result_fahrenheit);
+  printf("-----------------------------------------------------------------\n");
 
 }
 
@@ -61,28 +73,29 @@ int main(int argc, char *argv[]){
 
     if( argv[1] == NULL ){
       printf("Ausência de argumentos no parâmetro\n");
+      printf("\nTente --help ou -h para ter uma ajuda\n");
       return 1;
     }
     if (0 == strcmp(argv[1] ,"-h") || 0 == strcmp(argv[1] ,"--help")){
-      help();
+      display_help();
       return 0;
     } 
 
     if( argv[2] == NULL ){
       printf("Ausência de argumentos no segundo parâmetro\n");
-    }
-    else if (0 == strcmp(argv[1] ,"-f") || 0 == strcmp(argv[1] ,"--fahrenheit")){
+      printf("\nTente --help ou -h para ter uma ajuda\n");
+
+    }else if (0 == strcmp(argv[1] ,"-f") || 0 == strcmp(argv[1] ,"--fahrenheit")){
       sscanf(argv[2],"%f",&temperature);
-      fahrenheit(temperature);
+      converter_fahrenheit(temperature);
 
     }else if (0 == strcmp(argv[1] ,"-k") || 0 == strcmp(argv[1] ,"--kelvin")){
       sscanf(argv[2],"%f",&temperature);
-      kelvin(temperature);
-    }
+      converter_kelvin(temperature);
 
-    else if (0 == strcmp(argv[1] ,"-c") || 0 == strcmp(argv[1] ,"--celsius")){
+    }else if (0 == strcmp(argv[1] ,"-c") || 0 == strcmp(argv[1] ,"--celsius")){
       sscanf(argv[2],"%f",&temperature);
-      celsius(temperature);
+      converter_celsius(temperature);
     }
 
 }
